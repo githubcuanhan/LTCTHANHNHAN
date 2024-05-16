@@ -1,0 +1,34 @@
+﻿<!-- Details.cshtml -->
+@{
+    ViewBag.Title = "Chi tiết sinh viên";
+}
+
+<h2>Chi tiết sinh viên</h2>
+
+<dl class="dl-horizontal">
+    <dt>Mã SV:</dt>
+    <dd>@Model.MaSV</dd>
+
+    <dt>Họ tên:</dt>
+    <dd>@Model.HoTen</dd>
+
+    <dt>Ngày sinh:</dt>
+    <dd>@Model.NgaySinh.ToShortDateString()</dd>
+
+    <dt>Giới tính:</dt>
+    <dd>@(Model.GioiTinh ? "Nam" : "Nữ")</dd>
+
+    <dt>Mã lớp SH:</dt>
+    <dd>@Model.MaLopSH</dd>
+
+    <dt>Mã khoa:</dt>
+    <dd>@Model.MaKhoa</dd>
+
+    <dt>Mã trường:</dt>
+    <dd>@Model.MaTruong</dd>
+</dl>
+
+<p>
+    @Html.ActionLink("Sửa", "Edit", new { id = Model.MaSV }) |
+    @Html.ActionLink("Quay lại danh sách", "Index")
+</p>

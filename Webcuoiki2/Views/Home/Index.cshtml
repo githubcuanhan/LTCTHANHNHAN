@@ -1,8 +1,42 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿<!-- Index.cshtml -->
+@{
+    ViewBag.Title = "Danh sách sinh viên";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<h2>Danh sách sinh viên</h2>
+
+<p>
+    @Html.ActionLink("Thêm sinh viên mới", "Create")
+</p>
+
+<table class="table">
+    <tr>
+        <th>Mã SV</th>
+        <th>Họ tên</th>
+        <th>Ngày sinh</th>
+        <th>Giới tính</th>
+        <th>Mã lớp SH</th>
+        <th>Mã khoa</th>
+        <th>Mã trường</th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.MaSV</td>
+            <td>@item.HoTen</td>
+            <td>@item.NgaySinh.ToShortDateString()</td>
+            <td>@(item.GioiTinh ? "Nam" : "Nữ")</td>
+            <td>@item.MaLopSH</td>
+            <td>@item.MaKhoa</td>
+            <td>@item.MaTruong</td>
+            <td>
+                @Html.ActionLink("Chi tiết", "Details", new { id = item.MaSV }) |
+                @Html.ActionLink("Sửa", "Edit", new { id = item.MaSV }) |
+                @Html.ActionLink("Xóa", "Delete", new { id = item.MaSV })
+            </td>
+        </tr>
+    }
+
+</table>
